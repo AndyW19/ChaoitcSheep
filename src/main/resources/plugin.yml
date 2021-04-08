@@ -1,0 +1,11 @@
+name: Testpl
+version: ${project.version}
+main: me.andyw19.testpl.Main
+api-version: 1.16
+prefix: Andy's test plugin
+authors: [ AndyW19 ]
+description: Test Plugin
+commands:
+  clearinv:
+    description: Clear the inv
+    usage: /<command>
