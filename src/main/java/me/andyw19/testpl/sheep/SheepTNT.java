@@ -1,4 +1,4 @@
-package me.andyw19.testpl;
+package me.andyw19.testpl.sheep;
 
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
@@ -6,11 +6,10 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.SheepRegrowWoolEvent;
 
 import java.util.Random;
-
-import static org.bukkit.Bukkit.getServer;
 
 public class SheepTNT implements Listener {
 
@@ -30,6 +29,23 @@ public class SheepTNT implements Listener {
             World world = sheepRegrowWoolEvent.getEntity().getWorld();
 
             triggerTNT(ran, world, location);
+        }
+
+    }
+
+    @EventHandler
+    public void onSheepFire(EntityDamageEvent event) {
+
+        if (event.getEntity() instanceof Sheep) {
+            Sheep sheep = (Sheep) event.getEntity();
+            DyeColor dyeColor = sheep.getColor();
+            if (dyeColor == DyeColor.RED) {
+                if((event.getCause() == EntityDamageEvent.DamageCause.FIRE
+                        || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)) {
+                    event.getEntity().getWorld().createExplosion(sheep.getLocation(), 4f);
+                }
+            }
+
         }
 
     }
