@@ -1,8 +1,9 @@
-package me.andyw19.testpl;
+package me.andyw19.chaoticsheep;
 
-import me.andyw19.testpl.commands.ClearCommand;
-import me.andyw19.testpl.sheep.SheepFire;
-import me.andyw19.testpl.sheep.SheepTNT;
+import me.andyw19.chaoticsheep.commands.ClearCommand;
+import me.andyw19.chaoticsheep.commands.ReloadCommand;
+import me.andyw19.chaoticsheep.sheep.SheepFire;
+import me.andyw19.chaoticsheep.sheep.SheepTNT;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,15 +23,13 @@ public final class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BreakBlock(), this);
 
-        if (config.getBoolean("TntSheep")) {
-            getServer().getPluginManager().registerEvents(new SheepTNT(), this);
-        }
-        if (config.getBoolean("FireSheep")) {
-            getServer().getPluginManager().registerEvents(new SheepFire(), this);
-        }
+        getServer().getPluginManager().registerEvents(new SheepTNT(this), this);
+        getServer().getPluginManager().registerEvents(new SheepFire(this), this);
 
         getServer().getPluginCommand("clearinv").setExecutor(new ClearCommand(this));
+        getServer().getPluginCommand("reloadpl").setExecutor(new ReloadCommand(this));
     }
+
 
     @Override
     public void onDisable() {

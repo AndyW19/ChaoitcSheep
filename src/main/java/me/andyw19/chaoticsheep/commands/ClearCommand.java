@@ -1,6 +1,6 @@
-package me.andyw19.testpl.commands;
+package me.andyw19.chaoticsheep.commands;
 
-import me.andyw19.testpl.Main;
+import me.andyw19.chaoticsheep.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

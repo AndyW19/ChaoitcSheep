@@ -9,3 +9,6 @@ commands:
   clearinv:
     description: Clear the inv
     usage: /<command>
+  reloadpl:
+    description: Reload plugin
+    usage: /<command>
