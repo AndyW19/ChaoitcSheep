@@ -1,4 +1,4 @@
-name: Testpl
+name: ChaoticSheep
 version: ${project.version}
 main: me.andyw19.testpl.Main
 api-version: 1.16
@@ -9,6 +9,9 @@ commands:
   clearinv:
     description: Clear the inv
     usage: /<command>
-  reloadpl:
+  csreload:
     description: Reload plugin
+    usage: /<command>
+  csenable:
+    description: Enable Sheep
     usage: /<command>

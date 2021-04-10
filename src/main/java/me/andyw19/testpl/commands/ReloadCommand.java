@@ -1,6 +1,6 @@
-package me.andyw19.chaoticsheep.commands;
+package me.andyw19.testpl.commands;
 
-import me.andyw19.chaoticsheep.Main;
+import me.andyw19.testpl.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +21,7 @@ public class ReloadCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (player.isOp() || player.hasPermission("reloadpl")) {
+            if (player.isOp() || player.hasPermission("csreload")) {
 
                 main.reloadConfig();
 

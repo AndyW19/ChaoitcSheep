@@ -1,6 +1,6 @@
-package me.andyw19.chaoticsheep.sheep;
+package me.andyw19.testpl.sheep;
 
-import me.andyw19.chaoticsheep.Main;
+import me.andyw19.testpl.Main;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -23,7 +23,7 @@ public class SheepTNT implements Listener {
     @EventHandler
     public void onSheepGraze(SheepRegrowWoolEvent sheepRegrowWoolEvent) {
 
-        if (main.getConfig().getBoolean("TntSheep")) {
+        if (main.getConfig().getBoolean("TNTSHEEP")) {
             Sheep sheep = sheepRegrowWoolEvent.getEntity();
             DyeColor dyeColor = sheep.getColor();
 
@@ -38,15 +38,12 @@ public class SheepTNT implements Listener {
                 triggerTNT(ran, world, location);
             }
         }
-
-
-
     }
 
     @EventHandler
     public void onSheepFire(EntityDamageEvent event) {
 
-        if (main.getConfig().getBoolean("TntSheep")) {
+        if (main.getConfig().getBoolean("TNTSHEEP")) {
             if (event.getEntity() instanceof Sheep) {
                 Sheep sheep = (Sheep) event.getEntity();
                 DyeColor dyeColor = sheep.getColor();

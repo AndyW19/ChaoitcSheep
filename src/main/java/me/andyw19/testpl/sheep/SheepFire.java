@@ -1,6 +1,6 @@
-package me.andyw19.chaoticsheep.sheep;
+package me.andyw19.testpl.sheep;
 
-import me.andyw19.chaoticsheep.Main;
+import me.andyw19.testpl.Main;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Sheep;
@@ -21,7 +21,7 @@ public class SheepFire implements Listener {
     @EventHandler
     public void onSheepGraze(SheepRegrowWoolEvent sheepRegrowWoolEvent) {
 
-        if (main.getConfig().getBoolean("FireSheep")) {
+        if (main.getConfig().getBoolean("FIRESHEEP")) {
             Sheep sheep = sheepRegrowWoolEvent.getEntity();
             DyeColor dyeColor = sheep.getColor();
 
