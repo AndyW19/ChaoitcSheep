@@ -2,15 +2,12 @@ package me.andyw19.testpl.sheep;
 
 import me.andyw19.testpl.Main;
 import org.bukkit.*;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.SheepRegrowWoolEvent;
-
-import java.util.Random;
 
 public class SheepTNT implements Listener {
 
@@ -28,14 +25,10 @@ public class SheepTNT implements Listener {
             DyeColor dyeColor = sheep.getColor();
 
             if (dyeColor == DyeColor.RED) {
-                Location location = sheepRegrowWoolEvent.getEntity().getLocation();
+                Location location = sheepRegrowWoolEvent.getEntity().getLocation().add(0,-1,0);
 
-                Random rand = new Random();
-                int ran = rand.nextInt(3-1) + 1;
-
-                World world = sheepRegrowWoolEvent.getEntity().getWorld();
-
-                triggerTNT(ran, world, location);
+                Block block = location.getBlock();
+                block.setType(Material.TNT);
             }
         }
     }
@@ -55,12 +48,6 @@ public class SheepTNT implements Listener {
                 }
 
             }
-        }
-    }
-
-    public static void triggerTNT(int ran, World world, Location location) {
-        for (int i = 0; i < ran; i++) {
-            Entity tnt = world.spawnEntity(location, EntityType.PRIMED_TNT);
         }
     }
 

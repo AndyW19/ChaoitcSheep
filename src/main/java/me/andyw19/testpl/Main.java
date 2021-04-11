@@ -6,6 +6,7 @@ import me.andyw19.testpl.sheep.SheepFire;
 import me.andyw19.testpl.sheep.SheepTNT;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 public final class Main extends JavaPlugin {
 
@@ -14,6 +15,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        config.addDefault("SHEEPSPAWNING", true);
         config.addDefault("TNTSHEEP", true);
         config.addDefault("FIRESHEEP", true);
         config.options().copyDefaults(true);
@@ -27,6 +29,8 @@ public final class Main extends JavaPlugin {
         getServer().getPluginCommand("csreload").setExecutor(new ReloadCommand(this));
         getServer().getPluginCommand("csenable").setExecutor(new EnableSheep(this));
         getServer().getPluginCommand("csenable").setTabCompleter(new EnableSheep(this));
+
+        BukkitTask sheepSpawn = new SheepSpawn(this).runTaskTimer(this,0L, 600L);
     }
 
 

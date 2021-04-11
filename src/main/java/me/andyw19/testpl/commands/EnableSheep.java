@@ -42,13 +42,9 @@ public class EnableSheep implements CommandExecutor, TabCompleter  {
                     }
                 }
                 return true;
-            } else {
-                return true;
             }
-
-        } else {
-            return true;
         }
+            return true;
     }
 
     @Override
@@ -58,6 +54,7 @@ public class EnableSheep implements CommandExecutor, TabCompleter  {
             List<String> arguements = new ArrayList<>();
             arguements.add("TNTSHEEP");
             arguements.add("FIRESHEEP");
+            arguements.add("SHEEPSPAWNING");
 
             return arguements;
 
