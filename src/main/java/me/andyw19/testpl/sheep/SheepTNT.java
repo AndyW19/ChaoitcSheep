@@ -7,6 +7,7 @@ import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.SheepRegrowWoolEvent;
 
 public class SheepTNT implements Listener {
@@ -42,13 +43,29 @@ public class SheepTNT implements Listener {
                 DyeColor dyeColor = sheep.getColor();
                 if (dyeColor == DyeColor.RED) {
                     if((event.getCause() == EntityDamageEvent.DamageCause.FIRE
-                            || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)) {
+                        || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)) {
                         event.getEntity().getWorld().createExplosion(sheep.getLocation(), 4f);
                     }
                 }
 
             }
         }
+    }
+
+    @EventHandler
+    public void onSheepDeath(EntityDeathEvent event) {
+
+        if (main.getConfig().getBoolean("TNTSHEEP")) {
+            if (event.getEntity() instanceof Sheep) {
+                Sheep sheep = (Sheep) event.getEntity();
+                DyeColor dyeColor = sheep.getColor();
+                if (dyeColor == DyeColor.RED) {
+                        event.getEntity().getWorld().createExplosion(sheep.getLocation(), 4f);
+                }
+
+            }
+        }
+
     }
 
 }

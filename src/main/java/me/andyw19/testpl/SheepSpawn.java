@@ -34,7 +34,7 @@ public class SheepSpawn extends BukkitRunnable {
                 }
             }
 
-            if (countSheep < 10) {
+            if (countSheep < main.getConfig().getInt("SHEEPSPAWNING-CAP")) {
                 Location toSpawn = null;
 
                 int x = on.getLocation().getBlockX() + randInt(-20, 20);
@@ -43,26 +43,27 @@ public class SheepSpawn extends BukkitRunnable {
 
                 for (int y = 30; y < 100; y++) {
                     toSpawn = new Location(world, x, y, z);
-                    if (toSpawn.getBlock().getType() == Material.AIR && toSpawn.add(0, 3, 0).getBlock().getType() == Material.AIR) {
+                    if (((toSpawn.getBlock().getType() == Material.AIR) || (toSpawn.getBlock().getType() == Material.GRASS))
+                            && toSpawn.add(0, 3, 0).getBlock().getType() == Material.AIR) {
                         toSpawn = new Location(on.getWorld(), x, y, z);
                         break;
                     }
                 }
 
                 int lRand = randInt(1, 4);
-                int dRand = randInt(1, 16);
+                int dRand = randInt(1, 3);
 
                 DyeColor dyeColor;
 
                 switch (dRand) {
                     case 1:
-                        dyeColor = LIME;
+                        dyeColor = ORANGE;
                         break;
                     case 2:
                         dyeColor = RED;
                         break;
                     case 3:
-                        dyeColor = BLACK;
+                        dyeColor = YELLOW;
                         break;
                     case 4:
                         dyeColor = BLUE;
@@ -71,7 +72,7 @@ public class SheepSpawn extends BukkitRunnable {
                         dyeColor = BROWN;
                         break;
                     case 6:
-                        dyeColor = ORANGE;
+                        dyeColor = LIME;
                         break;
                     case 7:
                         dyeColor = LIGHT_BLUE;
@@ -98,7 +99,7 @@ public class SheepSpawn extends BukkitRunnable {
                         dyeColor = CYAN;
                         break;
                     case 15:
-                        dyeColor = YELLOW;
+                        dyeColor = BLACK;
                         break;
                     case 16:
                         dyeColor = MAGENTA;

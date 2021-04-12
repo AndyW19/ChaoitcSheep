@@ -54,7 +54,7 @@ public class EnableSheep implements CommandExecutor, TabCompleter  {
             List<String> arguements = new ArrayList<>();
             arguements.add("TNTSHEEP");
             arguements.add("FIRESHEEP");
-            arguements.add("SHEEPSPAWNING");
+            arguements.add("FLOWERSHEEP");
 
             return arguements;
 
