@@ -26,7 +26,7 @@ public class SheepSpawn extends BukkitRunnable {
     public void run() {
         for (Player on : Bukkit.getOnlinePlayers()) {
 
-            List<Entity> nearby =  on.getNearbyEntities(25,25,25);
+            List<Entity> nearby =  on.getNearbyEntities(96,96,96);
             int countSheep = 0;
             for (Entity tmp: nearby) {
                 if (tmp instanceof Sheep) {
@@ -37,8 +37,8 @@ public class SheepSpawn extends BukkitRunnable {
             if (countSheep < main.getConfig().getInt("SHEEPSPAWNING-CAP")) {
                 Location toSpawn = null;
 
-                int x = on.getLocation().getBlockX() + randInt(-20, 20);
-                int z = on.getLocation().getBlockZ() + randInt(-20, 20);
+                int x = on.getLocation().getBlockX() + randInt(-30, 30);
+                int z = on.getLocation().getBlockZ() + randInt(-30, 30);
                 World world = on.getWorld();
 
                 for (int y = 30; y < 100; y++) {

@@ -18,6 +18,7 @@ public final class Main extends JavaPlugin {
 
         config.addDefault("SHEEPSPAWNING", true);
         config.addDefault("SHEEPSPAWNING-CAP", 30);
+        config.addDefault("SHEEPSPAWNING-FREQUENCY", 30);
         config.addDefault("TNTSHEEP", true);
         config.addDefault("FIRESHEEP", true);
         config.addDefault("FLOWERSHEEP", true);
@@ -25,6 +26,8 @@ public final class Main extends JavaPlugin {
         saveConfig();
 
         System.out.println("ChaoticSheep has loaded");
+
+        getServer().getPluginManager().registerEvents(new SheepShear(this), this);
 
         getServer().getPluginManager().registerEvents(new SheepTNT(this), this);
         getServer().getPluginManager().registerEvents(new SheepFire(this), this);
@@ -34,7 +37,9 @@ public final class Main extends JavaPlugin {
         getServer().getPluginCommand("csenable").setExecutor(new EnableSheep(this));
         getServer().getPluginCommand("csenable").setTabCompleter(new EnableSheep(this));
 
-        BukkitTask sheepSpawn = new SheepSpawn(this).runTaskTimer(this,0L, 600L);
+        long per = config.getInt("SHEEPSPAWNING_FREQUENCY") * 20L;
+
+        BukkitTask sheepSpawn = new SheepSpawn(this).runTaskTimer(this,200L, per);
     }
 
 
