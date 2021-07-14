@@ -4,6 +4,7 @@ import me.andyw19.testpl.commands.EnableSheep;
 import me.andyw19.testpl.commands.ReloadCommand;
 import me.andyw19.testpl.sheep.SheepFire;
 import me.andyw19.testpl.sheep.SheepFlower;
+import me.andyw19.testpl.sheep.SheepJumper;
 import me.andyw19.testpl.sheep.SheepTNT;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,6 +23,7 @@ public final class Main extends JavaPlugin {
         config.addDefault("TNTSHEEP", true);
         config.addDefault("FIRESHEEP", true);
         config.addDefault("FLOWERSHEEP", true);
+        config.addDefault("JUMPSHEEP", true);
         config.options().copyDefaults(true);
         saveConfig();
 
@@ -32,6 +34,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SheepTNT(this), this);
         getServer().getPluginManager().registerEvents(new SheepFire(this), this);
         getServer().getPluginManager().registerEvents(new SheepFlower(this), this);
+        getServer().getPluginManager().registerEvents(new SheepJumper(this), this);
 
         getServer().getPluginCommand("csreload").setExecutor(new ReloadCommand(this));
         getServer().getPluginCommand("csenable").setExecutor(new EnableSheep(this));
